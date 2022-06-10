@@ -40,12 +40,10 @@ $ pip install -r requirements.txt
   
 
 Run `download.sh` to download processed datasets for the VizNet corpus.
-
 It will also create `data` directory.
 
   
 ```console
-
 $ bash download.sh
 
 ```
@@ -148,9 +146,7 @@ To specify GPU, use `CUDA_VISIBLE_DEVICES` environment variable. For example,
   
 
 ```console
-
 $ CUDA_VISIBLE_DEVICES=0 python doduo/train_multi.py --tasks turl --max_length 32 --batch_size 16
-
 ```
 
   
@@ -160,9 +156,7 @@ After training, you will see the following files in the `./model` directory.
   
 
 ```console
-
 $ ls model
-
 ```
 
   
@@ -178,9 +172,7 @@ $ ls model
   
 
 ```console
-
 $ python doduo/predict_multi.py <model_path>
-
 ```
 
   
@@ -190,9 +182,7 @@ $ python doduo/predict_multi.py <model_path>
   
 
 ```console
-
 $ python doduo/predict_multi.py model/turl_mosato_bert_bert-base-uncased-bs16-ml-32__turl-1.00
-
 ```
 
 Note while specifying model names, the last part of the model name "\_best\_macro\_f1.pt" needs to be omitted.
@@ -209,8 +199,6 @@ The inference code will produce a JSON file in `./eval`.
 
   
 
-  
-
 ## Annotating pandas dataframe
 
   
@@ -220,79 +208,52 @@ The Doduo Python module uses Pandas DataFrame as the base data structure. You ca
   
 
 ``` Python
-
 doduo = Doduo()
-
 df = pd.read_csv("your_table.csv")
-
 annotated_df = doduo.annotate_columns(df)
-
-  
-
 ```
 
   
 
 Doduo.annotate_columns() will annotate the following three attributes to the input table and return an AnnotatedDataFrame object.
 
-  
-
 * coltypes (List[str])): Predicted column types
-
 * colrels (List[str]): Predicted column relations
-
 * colemb (List[np.ndarray]): Contextualized column embeddings
 
-  
+
 
 Let's take a look at examples.
 
   
 
 ``` Python
-
 import argparse
-
 import pandas as pd
-
 from doduo import Doduo
 
-  
 
 # Load Doduo model
-
 args = argparse.Namespace
-
 args.model = "wikitable" # or args.model = "viznet"
-
 doduo = Doduo(args)
 
   
-
 # Load sample tables
-
 df1 = pd.read_csv("sample_tables/sample_table1.csv", index_col=0)
-
 df2 = pd.read_csv("sample_tables/sample_table2.csv", index_col=0)
 
   
 
 # Sample 1: Column annotation
-
 annot_df1 = doduo.annotate_columns(df1)
-
 print(annot_df1.coltypes)
 
   
 
 # Sample 2: Column annotation
-
 annot_df2 = doduo.annotate_columns(df2)
-
 print(annot_df2.coltypes)
-
-  
-
 ```
 
   
@@ -302,25 +263,15 @@ print(annot_df2.coltypes)
   
 
 ```
-
 @inbook{10.1145/3514221.3517906,
-
 author = {Suhara, Yoshihiko and Li, Jinfeng and Li, Yuliang and Zhang, Dan and Demiralp, \c{C}a\u{g}atay and Chen, Chen and Tan, Wang-Chiew},
-
 title = {Annotating Columns with Pre-trained Language Models},
-
 year = {2022},
-
 isbn = {9781450392495},
-
 publisher = {Association for Computing Machinery},
-
 url = {https://doi.org/10.1145/3514221.3517906},
-
 booktitle = {Proceedings of the 2022 International Conference on Management of Data},
-
 }
-
 ```
 
   
@@ -331,13 +282,7 @@ booktitle = {Proceedings of the 2022 International Conference on Management of D
 
 Datasets in this repo include variations of the "Sato" and "TURL" datasets.
 
-  
-
-Sato refers to the dataset used in ["Sato: Contextual Semantic Type Detection in Tables." Proceedings of the VLDB Endowment Vol. 13, No.11](https://github.com/megagonlabs/sato).
-
-The dataset was generated from the [VizNet](https://github.com/mitmedialab/viznet) corpus.
-
-  
+Sato refers to the dataset used in ["Sato: Contextual Semantic Type Detection in Tables." Proceedings of the VLDB Endowment Vol. 13, No.11](https://github.com/megagonlabs/sato). The dataset was generated from the [VizNet](https://github.com/mitmedialab/viznet) corpus.
 
 URL refers to the dataset used in ["TURL: table understanding through representation learning." Proceedings of the VLDB Endowment 14.3 (2020): 307-319](https://github.com/sunlab-osu/TURL). The dataset was generated from the [WikiTable](http://websail-fe.cs.northwestern.edu/TabEL/) corpus.
 
@@ -347,53 +292,9 @@ URL refers to the dataset used in ["TURL: table understanding through representa
 
 # Disclosure
 
-  
+Embedded in, or bundled with, this product are open source software (OSS) components, datasets and other third party components identified below. The license terms respectively governing the datasets and third-party components continue to govern those portions, and you agree to those license terms, which, when applicable, specifically limit any distribution. You may receive a copy of, distribute and/or modify any open source code for the OSS component under the terms of their respective licenses. In the event of conflicts between Megagon Labs, Inc. Recruit Co., Ltd., license conditions and the Open Source Software license conditions, the Open Source Software conditions shall prevail with respect to the Open Source Software portions of the software. You agree not to, and are not permitted to, distribute actual datasets used with the OSS components listed below. You agree and are limited to distribute only links to datasets from known sources by listing them in the datasets overview table below. You are permitted to distribute derived datasets of data sets from known sources by including links to original dataset source in the datasets overview table below. You agree that any right to modify datasets originating from parties other than Megagon Labs, Inc. are governed by the respective third party’s license conditions. All OSS components and datasets are distributed WITHOUT ANY WARRANTY, without even implied warranty such as for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE, and without any liability to or claim against any Megagon Labs, Inc. entity other than as explicitly documented in this README document. You agree to cease using any part of the provided materials if you do not agree with the terms or the lack of any warranty herein. While Megagon Labs, Inc., makes commercially reasonable efforts to ensure that citations in this document are complete and accurate, errors may occur. If you see any error or omission, please help us improve this document by sending information to contact_oss@megagon.ai.
 
-Embedded in, or bundled with, this product are open source software (OSS) components, datasets and other third party
-
-components identified below. The license terms respectively governing the datasets and third-party components continue
-
-to govern those portions, and you agree to those license terms, which, when applicable, specifically limit any
-
-distribution. You may receive a copy of, distribute and/or modify any open source code for the OSS component under the
-
-terms of their respective licenses. In the event of conflicts between Megagon Labs, Inc. Recruit Co., Ltd., license
-
-conditions and the Open Source Software license conditions, the Open Source Software conditions shall prevail with
-
-respect to the Open Source Software portions of the software. You agree not to, and are not permitted to, distribute
-
-actual datasets used with the OSS components listed below. You agree and are limited to distribute only links to
-
-datasets from known sources by listing them in the datasets overview table below. You are permitted to distribute
-
-derived datasets of data sets from known sources by including links to original dataset source in the datasets overview
-
-table below. You agree that any right to modify datasets originating from parties other than Megagon Labs, Inc. are
-
-governed by the respective third party's license conditions. All OSS components and datasets are distributed WITHOUT ANY
-
-WARRANTY, without even implied warranty such as for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE, and without any
-
-liability to or claim against any Megagon Labs, Inc. entity other than as explicitly documented in this README document.
-
-You agree to cease using any part of the provided materials if you do not agree with the terms or the lack of any
-
-warranty herein. While Megagon Labs, Inc., makes commercially reasonable efforts to ensure that citations in this
-
-document are complete and accurate, errors may occur. If you see any error or omission, please help us improve this
-
-document by sending information to contact_oss@megagon.ai.
-
-  
-
-All dataset and code used within the product are listed below (including their copyright holders and the license conditions).
-
-For Datasets having different portions released under different licenses, please refer to the included source link
-
-specified for each of the respective datasets for identifications of dataset files released under the identified
-
-licenses.
+All dataset and code used within the product are listed below (including their copyright holders and the license conditions). For Datasets having different portions released under different licenses, please refer to the included source link specified for each of the respective datasets for identifications of dataset files released under the identified licenses.
 
  
 
