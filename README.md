@@ -395,14 +395,12 @@ specified for each of the respective datasets for identifications of dataset fil
 
 licenses.
 
-  
+ 
 
   
 
 | ID  | OSS Component Name | Modified | Copyright Holder | Upstream Link | License  |
-
 |-----|----------------------------------|----------|------------------|-----------------------------------------------------------------------------------------------------------|--------------------|
-
 | 1 | BERT model | Yes  | Hugging Face | [link](https://huggingface.co/transformers/v3.0.2/_modules/transformers/modeling_bert.html) | Apache License 2.0 |
 
   
@@ -410,9 +408,6 @@ licenses.
   
 
 | ID  | Dataset | Modified | Copyright Holder | Source Link  | License |
-
 |-----|---------------------|----------|------------------------|----------------------------------------------------------|---------|
-
 | 1 | Sato dataset | No  |  | [source](https://github.com/megagonlabs/sato) generated from [VizNet](https://github.com/mitmedialab/viznet) | |
-
 | 2 | TURL dataset | No  |  | [source](https://github.com/sunlab-osu/TURL)  generated from [WikiTable](http://websail-fe.cs.northwestern.edu/TabEL/)| |
